@@ -8,8 +8,9 @@
     <script>
         var editor= makeEdition();
 
-        $(document).ready(function(){
-            $("h1").click(function shake(){
+        $(document).ready(function(){ //doesn't work
+            $("#textArea").keypress(function(){
+                if (countCharacters($("#textArea")) >= 10) {
                 $("#textArea").animate({marginLeft:"+=10px"},10)
                               .animate({marginLeft:"-=10px"},10)
                               .animate({marginLeft:"+=10px"},10)
@@ -20,7 +21,7 @@
                               .animate({marginLeft:"-=10px"},10)
                               .animate({marginLeft:"+=10px"},10)
                               .animate({marginLeft:"-=10px"},10);
-
+            }
             });
 
             $("#save").click(function(){
@@ -49,6 +50,20 @@
 
             });
 
+            var textColorIndex = 0;
+            var colorArray = ["red","blue", "green","purple","orange","black"];
+            var backColorIndex = colorArray.length - 1;
+
+            $("#colorText").click(function(){
+                $("#textArea").css("color", colorArray[textColorIndex]);
+                textColorIndex= (textColorIndex + 1) % colorArray.length
+            });
+
+            $("#colorBack").click(function(){
+                $("#textArea").css("background-color", colorArray[backColorIndex]);
+                backColorIndex= (backColorIndex + colorArray.length - 1) % colorArray.length
+            });
+
 
         });
     </script>
@@ -74,10 +89,12 @@
         <option value="20px">26</option>
         <option value="20px">28</option>
         <option value="20px">30</option>
-    </select>
+    </select> <br />
+    <input type="button" id="colorText" value="Change Text Color">
+    <input type="button" id="colorBack" value="Change Background Color">
 </form>
 
-<textarea id="textArea" rows="25" cols="50">
+<textarea id="textArea" maxlength="50" rows="10" columns="10">
 </textarea>
 <p id="charCountDisplay"></p>
 <p id="searchText"> </p>
