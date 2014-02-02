@@ -1,0 +1,18 @@
+p {
+    font-size: 12px;
+    font: cursive;
+    color: black;
+
+}
+#textarea {
+    float: right;
+}
+
+#searchText {
+    font-size: 12px;
+    font: serif;
+    background-color: white;
+    float: right;
+
+
+}

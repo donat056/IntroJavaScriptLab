@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emma Callery and David Donatucci's Javascript Lab</title>
+    <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="Functions.js"></script>
+
+    <script>
+        var editor= makeEdition();
+
+        $(document).ready(function(){
+            $("h1").click(function(){
+                $("#textArea").animate({marginLeft:"+=10px"},10);
+                $("#textArea").animate({marginLeft:"-=10px"},10);
+                $("#textArea").animate({marginLeft:"+=10px"},10);
+                $("#textArea").animate({marginLeft:"-=10px"},10);
+                $("#textArea").animate({marginLeft:"+=10px"},10);
+                $("#textArea").animate({marginLeft:"-=10px"},10);
+                $("#textArea").animate({marginLeft:"+=10px"},10);
+                $("#textArea").animate({marginLeft:"-=10px"},10);
+                $("#textArea").animate({marginLeft:"+=10px"},10);
+                $("#textArea").animate({marginLeft:"-=10px"},10);
+                $("#textArea").animate({marginLeft:"+=10px"},10);
+                $("#textArea").animate({marginLeft:"-=10px"},10);
+
+
+
+            });
+
+            $("#save").click(function(){
+                editor.save($("#textArea").val());
+            });
+
+            $("#undo").click(function(){
+                $("#textArea").val(editor.undo());
+            });
+
+            $("#redo").click(function(){
+                $("#textArea").val(editor.redo());
+            });
+
+            $("#charCount").click(function(){
+                $("#charCountDisplay").text("There are " + countCharacters($("#textArea").val()) + " Characters in the text.");
+            });
+
+//            $("#search").click(function(){
+//                var toHighlight = $("#toSearch").val()
+//                $("#SearchText").text($("#textArea").highlight(toHighlight));
+//            })
+
+
+        });
+    </script>
+</head>
+<body>
+<h1>Javascript Lab</h1>
+<form id="form1">
+    <input type="button" id="save" value="Save" />
+    <input type="button" id ="undo" value="Undo"  />
+    <input type="button" id="redo" value="Redo"/><br />
+    <input type="text"   id="toSearch" value="What to search?"/>
+    <input type="button" id="search" value="Search"/><br />
+    <input type="button" id="charCount" value="Character Count">
+</form>
+
+<textarea id="textArea" rows="25" cols="50">
+</textarea>
+<p id="charCountDisplay"></p>
+<p id="searchText"> </p>
+
+
+</body>
+</html>
+
