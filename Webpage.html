@@ -9,21 +9,17 @@
         var editor= makeEdition();
 
         $(document).ready(function(){
-            $("h1").click(function(){
-                $("#textArea").animate({marginLeft:"+=10px"},10);
-                $("#textArea").animate({marginLeft:"-=10px"},10);
-                $("#textArea").animate({marginLeft:"+=10px"},10);
-                $("#textArea").animate({marginLeft:"-=10px"},10);
-                $("#textArea").animate({marginLeft:"+=10px"},10);
-                $("#textArea").animate({marginLeft:"-=10px"},10);
-                $("#textArea").animate({marginLeft:"+=10px"},10);
-                $("#textArea").animate({marginLeft:"-=10px"},10);
-                $("#textArea").animate({marginLeft:"+=10px"},10);
-                $("#textArea").animate({marginLeft:"-=10px"},10);
-                $("#textArea").animate({marginLeft:"+=10px"},10);
-                $("#textArea").animate({marginLeft:"-=10px"},10);
-
-
+            $("h1").click(function shake(){
+                $("#textArea").animate({marginLeft:"+=10px"},10)
+                              .animate({marginLeft:"-=10px"},10)
+                              .animate({marginLeft:"+=10px"},10)
+                              .animate({marginLeft:"-=10px"},10)
+                              .animate({marginLeft:"+=10px"},10)
+                              .animate({marginLeft:"-=10px"},10)
+                              .animate({marginLeft:"+=10px"},10)
+                              .animate({marginLeft:"-=10px"},10)
+                              .animate({marginLeft:"+=10px"},10)
+                              .animate({marginLeft:"-=10px"},10);
 
             });
 
@@ -48,6 +44,11 @@
 //                $("#SearchText").text($("#textArea").highlight(toHighlight));
 //            })
 
+            $("#size").change(function(){
+              $("#textArea").css({"font-size":$("#size option:selected").val()});
+
+            });
+
 
         });
     </script>
@@ -58,9 +59,22 @@
     <input type="button" id="save" value="Save" />
     <input type="button" id ="undo" value="Undo"  />
     <input type="button" id="redo" value="Redo"/><br />
-    <input type="text"   id="toSearch" value="What to search?"/>
+    <input type="text"  id="toSearch" value="What to search?" />
     <input type="button" id="search" value="Search"/><br />
     <input type="button" id="charCount" value="Character Count">
+    <select id="size">
+        <option value="12px">FontSize</option>
+        <option value="12px">12</option>
+        <option value="14px">14</option>
+        <option value="16px">16</option>
+        <option value="18px">18</option>
+        <option value="20px">20</option>
+        <option value="20px">22</option>
+        <option value="20px">24</option>
+        <option value="20px">26</option>
+        <option value="20px">28</option>
+        <option value="20px">30</option>
+    </select>
 </form>
 
 <textarea id="textArea" rows="25" cols="50">
