@@ -11,9 +11,13 @@
     <script>
         var editor= makeEdition();
 
-        $(document).ready(function(){ //first jQuery effect
+        $(document).ready(function(){
+            //Can't see this button until you click search
+            $("#done").hide();
+
+            //first jQuery effect
             $("#textArea").keypress(function(){
-                if (countCharacters(document.getElementById("textArea").value) >=49) {
+                if (countCharacters(document.getElementById("textArea").value) > 49) {
                 $("#textArea").animate({marginLeft:"+=10px"},10)
                               .animate({marginLeft:"-=10px"},10)
                               .animate({marginLeft:"+=10px"},10)
@@ -44,13 +48,13 @@
                 var toHighlight = $("#toSearch").val() ;
                 $("#searchText").text($("#textArea").val());
                 $("#searchText").highlight(toHighlight);
-
+                $("#done").show();
             });
 
-            $("#done").click(function(){
+            $("#done").click(function(){//Done button is hidden again after it is clicked.
                $("#searchText").text("");
                $("#toSearch").val("What to search?");
- 
+               $("#done").hide();
             });
 
             $("#size").change(function(){
@@ -88,6 +92,9 @@
     <input type="button" id="charCount" value="Character Count">
     <select id="size">
         <option value="12px">FontSize</option>
+        <option value="6px">6</option>
+        <option value="8px">8</option>
+        <option value="10px">10</option>
         <option value="12px">12</option>
         <option value="14px">14</option>
         <option value="16px">16</option>
