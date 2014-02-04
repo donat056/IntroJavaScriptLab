@@ -1,18 +1,22 @@
+.highlight {
+    background-color: #FFFF88;
+}
+
 p {
     font-size: 12px;
     font: cursive;
     color: black;
 
 }
-#textarea {
-    float: right;
+#textArea {
+    float: left;
 }
 
 #searchText {
     font-size: 12px;
     font: serif;
     background-color: white;
-    float: right;
+    float: left;
 
 
 }
