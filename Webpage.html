@@ -2,26 +2,25 @@
 <html>
 <head>
     <title>Emma Callery and David Donatucci's Javascript Lab</title>
+    <link rel="stylesheet" type="text/css" href="Style.css" />
+
     <script  src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="Functions.js"></script>
+    <script src="jquery.highlight.js"></script>
 
     <script>
         var editor= makeEdition();
 
-        $(document).ready(function(){ //doesn't work
+        $(document).ready(function(){ //first jQuery effect
             $("#textArea").keypress(function(){
-                if (countCharacters($("#textArea")) >= 10) {
+                if (countCharacters(document.getElementById("textArea").value) >=49) {
                 $("#textArea").animate({marginLeft:"+=10px"},10)
                               .animate({marginLeft:"-=10px"},10)
                               .animate({marginLeft:"+=10px"},10)
                               .animate({marginLeft:"-=10px"},10)
                               .animate({marginLeft:"+=10px"},10)
-                              .animate({marginLeft:"-=10px"},10)
-                              .animate({marginLeft:"+=10px"},10)
-                              .animate({marginLeft:"-=10px"},10)
-                              .animate({marginLeft:"+=10px"},10)
                               .animate({marginLeft:"-=10px"},10);
-            }
+                }
             });
 
             $("#save").click(function(){
@@ -40,10 +39,19 @@
                 $("#charCountDisplay").text("There are " + countCharacters($("#textArea").val()) + " Characters in the text.");
             });
 
-//            $("#search").click(function(){
-//                var toHighlight = $("#toSearch").val()
-//                $("#SearchText").text($("#textArea").highlight(toHighlight));
-//            })
+
+            $("#search").click(function(){//second jQuery effect
+                var toHighlight = $("#toSearch").val() ;
+                $("#searchText").text($("#textArea").val());
+                $("#searchText").highlight(toHighlight);
+
+            });
+
+            $("#done").click(function(){
+               $("#searchText").text("");
+               $("#toSearch").val("What to search?");
+ 
+            });
 
             $("#size").change(function(){
               $("#textArea").css({"font-size":$("#size option:selected").val()});
@@ -75,7 +83,8 @@
     <input type="button" id ="undo" value="Undo"  />
     <input type="button" id="redo" value="Redo"/><br />
     <input type="text"  id="toSearch" value="What to search?" />
-    <input type="button" id="search" value="Search"/><br />
+    <input type="button" id="search" value="Search"/>
+    <input type="button" id="done" value="Done"><br />
     <input type="button" id="charCount" value="Character Count">
     <select id="size">
         <option value="12px">FontSize</option>
@@ -84,11 +93,11 @@
         <option value="16px">16</option>
         <option value="18px">18</option>
         <option value="20px">20</option>
-        <option value="20px">22</option>
-        <option value="20px">24</option>
-        <option value="20px">26</option>
-        <option value="20px">28</option>
-        <option value="20px">30</option>
+        <option value="22px">22</option>
+        <option value="24px">24</option>
+        <option value="26px">26</option>
+        <option value="28px">28</option>
+        <option value="30px">30</option>
     </select> <br />
     <input type="button" id="colorText" value="Change Text Color">
     <input type="button" id="colorBack" value="Change Background Color">
@@ -96,8 +105,9 @@
 
 <textarea id="textArea" maxlength="50" rows="10" columns="10">
 </textarea>
+
 <p id="charCountDisplay"></p>
-<p id="searchText"> </p>
+<p id="searchText"></p>
 
 
 </body>
